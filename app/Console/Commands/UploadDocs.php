@@ -10,25 +10,15 @@ class UploadDocs extends Command
 {
     protected $signature = 'upload-docs';
 
-    protected $description = 'Uploads all the docs to OpenAI';
+    protected $description = 'Uploads the docs to OpenAI';
 
     public function handle()
     {
-        $fullDocs = '';
-
-        foreach(Storage::disk('docs')->files() as $file) {
-            $fullDocs .= Storage::disk('docs')->get($file) . PHP_EOL . PHP_EOL;
-        }
-
-        Storage::disk('local')->put('full-pest-docs.md', $fullDocs);
-
-        $result = OpenAI::files()->upload([
+        $uploadedFile = OpenAI::files()->upload([
             'purpose' => 'assistants',
-            'file' => fopen(storage_path('app/full-pest-docs.md'), 'r'),
+            'file' => Storage::disk('local')->readStream('full-pest-docs.md'),
         ]);
 
-        $this->info('Done!');
-
-        $this->info('File ID: ' . $result->id);
+        $this->info('File ID: '.$uploadedFile->id);
     }
 }
