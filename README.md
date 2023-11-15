@@ -6,7 +6,7 @@ This bot let you ask questions answer based on the current Pest docs.
 
 The idea is to have a bot for the Pest docs, providing answers based on the current docs and not based on the old knowledge OpenAI has.
 
-This is the code used for my tutorial on [How to use the OpenAI Assistants API in Laravel](http://gehri.dev/blog/how-to-use-the-openai-assistants-api-in-laravel)
+This is the code used for my tutorial on [How to use the OpenAI Assistants API in Laravel](http://gehri.dev/blog/how-to-use-the-openai-assistants-api-in-php-and-laravel)
 
 ## Installation
 
